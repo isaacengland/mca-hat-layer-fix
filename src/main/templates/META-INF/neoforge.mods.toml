@@ -1,0 +1,40 @@
+modLoader   = "javafml"
+loaderVersion = "[4,)"
+license     = "MIT"
+
+[[mixins]]
+config = "mca_hat_layer_fix.mixins.json"
+
+[[mods]]
+    modId       = "mca_hat_fix"
+    version     = "${mod_version}"
+    displayName = "MCA Hat Fix"
+    description = '''
+        Suppresses the villager hat skin layer when a helmet occupies the head
+        equipment slot, eliminating z-fighting / texture flickering on MCA Reborn
+        villagers that wear armour.
+    '''
+
+# NeoForge itself
+[[dependencies.mca_hat_fix]]
+    modId        = "neoforge"
+    type         = "required"
+    versionRange = "[21.1.230,)"
+    ordering     = "NONE"
+    side         = "BOTH"
+
+# Minecraft
+[[dependencies.mca_hat_fix]]
+    modId        = "minecraft"
+    type         = "required"
+    versionRange = "[1.21.1,1.22)"
+    ordering     = "NONE"
+    side         = "BOTH"
+
+# MCA Reborn — must load before us so our mixin targets exist
+[[dependencies.mca_hat_fix]]
+    modId        = "mca"
+    type         = "required"
+    versionRange = "[1.0,)"
+    ordering     = "AFTER"
+    side         = "BOTH"
